@@ -29,10 +29,10 @@ Source files below are under `SweetHome3D/src/com/eteks/sweethome3d/`.
 
 ## Validation completed
 
-- All 219 Java source files compiled using Azul Zulu Java `1.8.0_512`; application resources were copied into `target/classes`.
-- All six unchanged supplied tests passed through a direct JUnit launcher, using cached JUnit Jupiter **5.10.2** / Platform **1.10.2**. The POM declares Jupiter 5.10.0.
-- This is not a completed normal Maven build. `mvn clean test` (including the smoke test) and `mvn -DskipTests package` remain pending because the required dependencies are not cached and the execution shell cannot download them.
-- `pom.xml` and `assignment-tests/` were not modified. The direct test log is `target/acceptance-tests.log`.
+- `mvn clean test` succeeded with Azul Zulu Java `1.8.0_512`, compiling all 219 Java source files with the configured Maven compiler plugin **3.13.0**.
+- All six unchanged supplied tests passed, including the smoke test: **0 failures, 0 errors, 0 skipped**. Surefire **3.1.2** used the declared JUnit Jupiter **5.10.0**, verified in `target/surefire-reports/`.
+- `mvn -DskipTests package` also succeeded and produced `target/sweet-home-3d-internship-5.4-internship.jar`. Tests were already completed by the preceding clean test run.
+- `pom.xml` and `assignment-tests/` were not modified.
 - A separate description integration check passed 13 assertions: editing the real Swing text field updates the controller and saved object; reopening retains the edit; undo and redo restore the expected descriptions.
 - Separate volume probes passed calculation, overridden getters, equal-volume comparisons, default/rendered columns, both sort directions, resizing, column toggling, CSV output, and serialization checks.
 - Separate printing probes passed 32 assertions covering hidden/empty/no-level homes, fixed-scale pagination, state restoration on injected failures, print-only Level columns, and retention of custom filters.
@@ -41,7 +41,7 @@ Source files below are under `SweetHome3D/src/com/eteks/sweethome3d/`.
 
 ## Remaining submission checklist
 
-- [ ] Complete the normal Maven build, smoke test, and full test run.
+- [x] Complete the normal Maven build, smoke test, and full test run.
 - [ ] Launch the application and capture the whole window as `submissions/task1-running.png`.
 - [ ] Edit a furniture description, confirm it persists after reopening the dialog, and capture `submissions/task2-description.png`.
 - [ ] Check Volume values, both sort directions, and main/context menus; capture `submissions/task3-volume.png` with values and a relevant menu.
