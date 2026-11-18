@@ -2004,10 +2004,63 @@ public class PlanComponent extends JComponent implements PlanView, Scrollable, P
   }
   
   /**
-   * Prints this component plan at the scale given in the home print attributes or at a scale 
-   * that makes it fill <code>pageFormat</code> imageable size if this attribute is <code>null</code>.
+   * Prints every viewable level in home order. By default each level fits on one page;
+   * an explicitly chosen scale may require several consecutive pages for a level.
    */
   public int print(Graphics g, PageFormat pageFormat, int pageIndex) {
+    if (pageIndex < 0
+        || pageFormat.getImageableWidth() <= 0
+        || pageFormat.getImageableHeight() <= 0) {
+      return NO_SUCH_PAGE;
+    }
+    if (this.home.getLevels().isEmpty()) {
+      return printSelectedLevel(g, pageFormat, pageIndex);
+    }
+
+    List<Level> printedLevels = new ArrayList<Level>();
+    for (Level level : this.home.getLevels()) {
+      if (level.isViewable()) {
+        printedLevels.add(level);
+      }
+    }
+    // Bounds already cover every viewable level, so their print scale and page count
+    // are consistent. Even an empty viewable level receives one blank plan page.
+    int pagesPerLevel = 1;
+    Rectangle2D printedItemBounds = getItemsBounds(g, getPaintedItems());
+    if (printedItemBounds != null
+        && this.home.getPrint() != null
+        && this.home.getPrint().getPlanScale() != null) {
+      float printScale = this.home.getPrint().getPlanScale().floatValue()
+          * LengthUnit.centimeterToInch(72);
+      pagesPerLevel = getPrintPageCount(printedItemBounds.getWidth(), printScale,
+          pageFormat.getImageableWidth())
+          * getPrintPageCount(printedItemBounds.getHeight(), printScale,
+              pageFormat.getImageableHeight());
+    }
+    int levelIndex = pageIndex / pagesPerLevel;
+    if (levelIndex >= printedLevels.size()) {
+      return NO_SUCH_PAGE;
+    }
+    Level selectedLevel = this.home.getSelectedLevel();
+    try {
+      this.home.setSelectedLevel(printedLevels.get(levelIndex));
+      return printSelectedLevel(g, pageFormat, pageIndex % pagesPerLevel);
+    } finally {
+      this.home.setSelectedLevel(selectedLevel);
+    }
+  }
+
+  /**
+   * Returns the number of pages along one dimension at a fixed print scale.
+   */
+  private int getPrintPageCount(double contentSize, float printScale, double imageableSize) {
+    return Math.max(1, (int)Math.ceil(contentSize * printScale / imageableSize));
+  }
+
+  /**
+   * Prints the selected level at the configured scale, or fits it to one page.
+   */
+  private int printSelectedLevel(Graphics g, PageFormat pageFormat, int pageIndex) {
     List<Selectable> printedItems = getPaintedItems(); 
     Rectangle2D printedItemBounds = getItemsBounds(g, printedItems);
     if (printedItemBounds != null) {
@@ -2033,14 +2086,8 @@ public class PlanComponent extends JComponent implements PlanView, Scrollable, P
       } else {
         // Apply print scale to paper size expressed in 1/72nds of an inch
         printScale = this.home.getPrint().getPlanScale().floatValue() * LengthUnit.centimeterToInch(72);
-        pagesPerRow = (int)(printedItemBounds.getWidth() * printScale / imageableWidth);
-        if (printedItemBounds.getWidth() * printScale != imageableWidth) {
-          pagesPerRow++;
-        }
-        pagesPerColumn = (int)(printedItemBounds.getHeight() * printScale / imageableHeight);
-        if (printedItemBounds.getHeight() * printScale != imageableHeight) {
-          pagesPerColumn++;
-        }
+        pagesPerRow = getPrintPageCount(printedItemBounds.getWidth(), printScale, imageableWidth);
+        pagesPerColumn = getPrintPageCount(printedItemBounds.getHeight(), printScale, imageableHeight);
         if (pageIndex >= pagesPerRow * pagesPerColumn) {
           return NO_SUCH_PAGE;
         }
@@ -2066,12 +2113,13 @@ public class PlanComponent extends JComponent implements PlanView, Scrollable, P
         // Print component contents
         paintContent(g2D, printScale, PaintMode.PRINT);
       } catch (InterruptedIOException ex) {
-        // Ignore exception because it may happen only in EXPORT paint mode 
-      }   
-      g2D.dispose();
+        // Ignore exception because it may happen only in EXPORT paint mode
+      } finally {
+        g2D.dispose();
+      }
       return PAGE_EXISTS;
     } else {
-      return NO_SUCH_PAGE;
+      return !this.home.getLevels().isEmpty() && pageIndex == 0 ? PAGE_EXISTS : NO_SUCH_PAGE;
     }
   }
   
