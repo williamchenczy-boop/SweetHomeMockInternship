@@ -36,7 +36,7 @@ Source files below are under `SweetHome3D/src/com/eteks/sweethome3d/`.
 - A separate description integration check passed 13 assertions: editing the real Swing text field updates the controller and saved object; reopening retains the edit; undo and redo restore the expected descriptions.
 - Separate volume probes passed calculation, overridden getters, equal-volume comparisons, default/rendered columns, both sort directions, resizing, column toggling, CSV output, and serialization checks.
 - Separate printing probes passed 32 assertions covering hidden/empty/no-level homes, fixed-scale pagination, state restoration on injected failures, print-only Level columns, and retention of custom filters.
-- A real four-page PDF was generated through the application's printing code at `submissions/task4-all-levels.pdf`: one furniture table and three level plans. Visual review is pending.
+- A real four-page PDF was generated through the application's printing code at `submissions/task4-all-levels.pdf`: one furniture table and three level plans. All four pages were visually reviewed: names, values and levels are legible, and the plans show the fridge, bunk bed, and chair/desk group in Level 0–2 order.
 - The extra development probes are separate from the six supplied tests. Full manual application checks are still pending; automated checks do not establish every visible behaviour.
 
 ## Remaining submission checklist
@@ -45,7 +45,7 @@ Source files below are under `SweetHome3D/src/com/eteks/sweethome3d/`.
 - [ ] Launch the application and capture the whole window as `submissions/task1-running.png`.
 - [ ] Edit a furniture description, confirm it persists after reopening the dialog, and capture `submissions/task2-description.png`.
 - [ ] Check Volume values, both sort directions, and main/context menus; capture `submissions/task3-volume.png` with values and a relevant menu.
-- [ ] Visually review the real Task 4 PDF for all-level furniture, the Level column, and three distinct plans; confirm the selected level and on-screen columns are preserved.
+- [x] Visually review the real Task 4 PDF for all-level furniture, the Level column, and three distinct plans; confirm the selected level and on-screen columns are preserved.
 - [ ] Run `python3 test_submission.py` after all evidence is present, and review each evidence file.
 - [ ] Review these explanations alongside the code and be able to explain the submitted changes.
 - [ ] Commit the evidence and intended deliverables, push the work to the GitHub fork, and check for forgotten changes with `git status --short`.
