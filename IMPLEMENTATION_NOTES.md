@@ -37,6 +37,7 @@ Source files below are under `SweetHome3D/src/com/eteks/sweethome3d/`.
 - Separate volume probes passed calculation, overridden getters, equal-volume comparisons, default/rendered columns, both sort directions, resizing, column toggling, CSV output, and serialization checks.
 - Separate printing probes passed 32 assertions covering hidden/empty/no-level homes, fixed-scale pagination, state restoration on injected failures, print-only Level columns, and retention of custom filters.
 - A real four-page PDF was generated through the application's printing code at `submissions/task4-all-levels.pdf`: one furniture table and three level plans. All four pages were visually reviewed: names, values and levels are legible, and the plans show the fridge, bunk bed, and chair/desk group in Level 0–2 order.
+- The user-provided `submissions/task3-volume-menu.png` shows Volume and Descending order selected, with top-level rows ordered Group, Bunk bed, Fridge. A separate screenshot with unobscured values and ascending order is still pending.
 - The extra development probes are separate from the six supplied tests. Full manual application checks are still pending; automated checks do not establish every visible behaviour.
 
 ## Remaining submission checklist
