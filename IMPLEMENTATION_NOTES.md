@@ -50,6 +50,7 @@ Source files below are under `SweetHome3D/src/com/eteks/sweethome3d/`.
 - [x] Run `python3 test_submission.py` after all evidence is present (PASS), and review each evidence file.
 - [ ] Review these explanations alongside the code and be able to explain the submitted changes.
 - [x] Commit the evidence and intended deliverables; check for forgotten changes with `git status --short`.
-- [ ] Obtain explicit publication approval, then push main and the task branches to the GitHub fork. Current Task 1 and Task 2 screenshots include the background ChatGPT sidebar.
+- [x] Obtain explicit publication approval for the code, branch history, and current evidence, including the background ChatGPT sidebar in the Task 1 and Task 2 screenshots.
+- [ ] Push main and the task branches to the GitHub fork. The authorized push was attempted on November 19 but GitHub rejected it with HTTP 403; Git authentication must be restored before publication can be confirmed.
 - [ ] Link relevant commits to Issues #1–#3 and close each issue only after its tests and evidence are complete.
 - [ ] Complete the course's MarkUs submission steps and confirm the submitted repository/version and available self-test results.
