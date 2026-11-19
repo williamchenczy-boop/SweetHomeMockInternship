@@ -51,6 +51,6 @@ Source files below are under `SweetHome3D/src/com/eteks/sweethome3d/`.
 - [ ] Review these explanations alongside the code and be able to explain the submitted changes.
 - [x] Commit the evidence and intended deliverables; check for forgotten changes with `git status --short`.
 - [x] Obtain explicit publication approval for the code, branch history, and current evidence, including the background ChatGPT sidebar in the Task 1 and Task 2 screenshots.
-- [ ] Push main and the task branches to the GitHub fork. The authorized push was attempted on November 19 but GitHub rejected it with HTTP 403; Git authentication must be restored before publication can be confirmed.
-- [ ] Link relevant commits to Issues #1–#3 and close each issue only after its tests and evidence are complete.
+- [x] Publish main and the task branches to the GitHub fork. On November 19, the user successfully pushed main through IntelliJ; the remote commit and all five evidence files were verified. Task and preparation branch refs were published at their original commit SHAs.
+- [x] Link the implementation commits and evidence to Issues [#1](https://github.com/williamchenczy-boop/SweetHomeMockInternship/issues/1), [#2](https://github.com/williamchenczy-boop/SweetHomeMockInternship/issues/2), and [#3](https://github.com/williamchenczy-boop/SweetHomeMockInternship/issues/3), and close all three as completed.
 - [ ] Complete the course's MarkUs submission steps and confirm the submitted repository/version and available self-test results.
