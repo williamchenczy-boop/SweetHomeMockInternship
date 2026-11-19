@@ -42,7 +42,7 @@ Source files below are under `SweetHome3D/src/com/eteks/sweethome3d/`.
 ## Remaining submission checklist
 
 - [x] Complete the normal Maven build, smoke test, and full test run.
-- [ ] Launch the application and capture the whole window as `submissions/task1-running.png`.
+- [x] Launch the application and capture the whole window as `submissions/task1-running.png` (user-provided screenshot with the sample loaded).
 - [ ] Edit a furniture description, confirm it persists after reopening the dialog, and capture `submissions/task2-description.png`.
 - [ ] Check Volume values, both sort directions, and main/context menus; capture `submissions/task3-volume.png` with values and a relevant menu.
 - [x] Visually review the real Task 4 PDF for all-level furniture, the Level column, and three distinct plans; confirm the selected level and on-screen columns are preserved.
