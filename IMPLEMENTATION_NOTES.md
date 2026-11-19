@@ -37,18 +37,19 @@ Source files below are under `SweetHome3D/src/com/eteks/sweethome3d/`.
 - Separate volume probes passed calculation, overridden getters, equal-volume comparisons, default/rendered columns, both sort directions, resizing, column toggling, CSV output, and serialization checks.
 - Separate printing probes passed 32 assertions covering hidden/empty/no-level homes, fixed-scale pagination, state restoration on injected failures, print-only Level columns, and retention of custom filters.
 - A real four-page PDF was generated through the application's printing code at `submissions/task4-all-levels.pdf`: one furniture table and three level plans. All four pages were visually reviewed: names, values and levels are legible, and the plans show the fridge, bunk bed, and chair/desk group in Level 0–2 order.
-- The user-provided `submissions/task3-volume-menu.png` shows Volume and Descending order selected, with top-level rows ordered Group, Bunk bed, Fridge. A separate screenshot with unobscured values and ascending order is still pending.
-- The extra development probes are separate from the six supplied tests. Full manual application checks are still pending; automated checks do not establish every visible behaviour.
+- The user-provided `submissions/task3-volume-menu.png` shows Volume and Descending order selected, with top-level rows ordered Group, Bunk bed, Fridge. `submissions/task3-volume.png` shows ascending order with unobscured values: Fridge 732,600; Bunk bed 4,305,600; Group 5,829,352.5.
+- The extra development probes are separate from the six supplied tests. Screenshots document the running application, edited Description field, Volume values and both sort directions. Main/context sort and display menu wiring and English tooltips were separately reviewed in the shared menu factories and resources; the context/display controls were not separately clicked in the live application.
 
 ## Remaining submission checklist
 
 - [x] Complete the normal Maven build, smoke test, and full test run.
 - [x] Launch the application and capture the whole window as `submissions/task1-running.png` (user-provided screenshot with the sample loaded).
 - [x] Capture the edited Description field as `submissions/task2-description.png`. The user supplied this screenshot after the save/reopen instructions; controller persistence was also verified by the separate integration check.
-- [ ] Check Volume values, both sort directions, and main/context menus; capture `submissions/task3-volume.png` with values and a relevant menu.
+- [x] Check Volume values and both sort directions in the running application; save `submissions/task3-volume.png` and `submissions/task3-volume-menu.png`. Review the shared main/context menu factories and labels in source.
 - [x] Visually review the real Task 4 PDF for all-level furniture, the Level column, and three distinct plans; confirm the selected level and on-screen columns are preserved.
-- [ ] Run `python3 test_submission.py` after all evidence is present, and review each evidence file.
+- [x] Run `python3 test_submission.py` after all evidence is present (PASS), and review each evidence file.
 - [ ] Review these explanations alongside the code and be able to explain the submitted changes.
-- [ ] Commit the evidence and intended deliverables, push the work to the GitHub fork, and check for forgotten changes with `git status --short`.
+- [x] Commit the evidence and intended deliverables; check for forgotten changes with `git status --short`.
+- [ ] Obtain explicit publication approval, then push main and the task branches to the GitHub fork. Current Task 1 and Task 2 screenshots include the background ChatGPT sidebar.
 - [ ] Link relevant commits to Issues #1–#3 and close each issue only after its tests and evidence are complete.
 - [ ] Complete the course's MarkUs submission steps and confirm the submitted repository/version and available self-test results.
